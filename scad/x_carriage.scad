@@ -40,8 +40,26 @@ module linear_bearings() {
   }
 }
 
+module y_axis_rod_clamps() {
+  clamp_height = 1 + rod_pressfit_horiz + 1;
+  translate([0, 0, clamp_height/2])
+  difference() {
+      cube([width, depth, clamp_height], center=true);
+    translate([-y_rod_spacing/2, depth/2+eps, 0])
+      rotate([90, 0, 0])
+        cylinder(d=rod_pressfit_horiz, h=depth*1.1);
+    translate([+y_rod_spacing/2, depth/2+eps, 0])
+      rotate([90, 0, 0])
+        cylinder(d=rod_pressfit_horiz, h=depth*1.1);
+  }
+}
+
 difference(){
-  cube([width, depth, height], center=true);
+  union() {
+    translate([0, 0, height/2])
+      y_axis_rod_clamps();
+    cube([width, depth, height], center=true);
+  }
   rod_clearances();
   linear_bearings();
 }
