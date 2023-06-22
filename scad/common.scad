@@ -10,16 +10,16 @@ x_rod_height = 30;
 y_rod_spacing = 30;
 y_rod_height = 38;
 
-lin_bearing_OD = 10;      // TODO verify measurement
-lin_bearing_length = 15;  // TODO verify measurement
+lin_bearing_OD = 9.97;
+lin_bearing_length = 14.95;
 
 rod_OD = 4.98;
 rod_clr = 1;
 rod_pressfit_horiz = 5;
-x_rod_length = 200;       // TODO verify measurement
-y_rod_length = 200;       // TODO verify measurement
+x_rod_length = 215;
+y_rod_length = 215;
 
-3mm_self_thread = 3.0;    // TODO verify measurement
+3mm_self_thread = 3.0; // for vertical (along 3D printer Z axis) holes only.
 
 pulley_deck_height = 44;
 
