@@ -42,7 +42,7 @@ module linear_bearings() {
 
 clamp_height = 1 + rod_pressfit_horiz + 1;
 module y_axis_rod_clamps() {
-  translate([0, 0, clamp_height/2])
+  // This modules's Z position is relative to the y rods' height. Thus the center of the pressfit holes are Z=0.
   difference() {
       cube([width, depth, clamp_height], center=true);
     translate([-y_rod_spacing/2, depth/2+eps, 0])
@@ -56,6 +56,7 @@ module y_axis_rod_clamps() {
 
 pm_height = 5;
 module pulley_mount() {
+  // This module's Z position is relative to the pulley system's deck height. Since pulleys mount on top of this, it's top surface is Z=0.
   // TODO these four dimensions need to be coordinated with the motor mounts, y-carriage, and y-end-cap. The current values are placeholders. I don't know how to name them or define them yet.
   back = 10;
   front = -10;
@@ -67,6 +68,7 @@ module pulley_mount() {
     [-outer, front],
     [+outer, front]
   ];
+  translate([0, 0, -pm_height/2])
   difference() {
     cube([width, depth, pm_height], center=true);
     for (i=[0:3])
@@ -76,12 +78,13 @@ module pulley_mount() {
 }
 
 module x_carriage() {
+  // This module's Z height is such that the center of the x rods are Z=0.
   difference(){
     union() {
-      translate([0, 0, height/2])
-        y_axis_rod_clamps();
       cube([width, depth, height], center=true);
-      translate([0, 0, height/2+clamp_height+pm_height/2])
+      translate([0, 0, y_rod_height-x_rod_height])
+        y_axis_rod_clamps();
+      translate([0, 0, pulley_deck_height-x_rod_height])
         pulley_mount();
     }
     rod_clearances();
@@ -90,3 +93,5 @@ module x_carriage() {
 }
 
 x_carriage();
+// y_axis_rod_clamps();
+// pulley_mount();
