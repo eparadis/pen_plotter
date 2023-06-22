@@ -60,6 +60,22 @@ module pulley_mount_deck() {
     cube([width, depth, pm_height], center=true);  // pulley mount deck
 }
 
+module pen_lifter_mounts_and_cutout() {
+  // This module's Z position is relative to the pulley system's deck height. Since the pen lifter mounts on top of this, its top surface is Z=0.
+
+  // cutout. clearance from the pulley deck to the drawing surface
+  translate([0, 0, -pulley_deck_height])
+    cylinder(d=20, h=pulley_deck_height+eps);
+  
+  // a bolt pattern for mounting future variety of pen lifters
+  for( theta = [45:90:360-30] ) {
+    translate([0, 0, -pm_height])
+      rotate([0, 0, theta])
+        translate([0, pen_lifter_bolt_pattern_diameter/2, 0])
+          cylinder(d=3mm_self_thread, h=pm_height*1.1);
+  }
+}
+
 module y_carriage() {
   // This module's Z height is referenced so that the center of the Y axis rods are Z=0
   difference() {
@@ -72,6 +88,8 @@ module y_carriage() {
     linear_bearings();
     translate([0, 0, pulley_deck_height-y_rod_height])
       pulley_mount_holes();
+    translate([0, 5, pulley_deck_height-y_rod_height])
+      pen_lifter_mounts_and_cutout();
   }
 }
 

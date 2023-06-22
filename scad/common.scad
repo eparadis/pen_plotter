@@ -22,3 +22,5 @@ y_rod_length = 200;       // TODO verify measurement
 3mm_self_thread = 3.0;    // TODO verify measurement
 
 pulley_deck_height = 48;
+
+pen_lifter_bolt_pattern_diameter = 25;
