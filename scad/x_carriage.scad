@@ -75,15 +75,18 @@ module pulley_mount() {
   }
 }
 
-difference(){
-  union() {
-    translate([0, 0, height/2])
-      y_axis_rod_clamps();
-    cube([width, depth, height], center=true);
-    translate([0, 0, height/2+clamp_height+pm_height/2])
-      pulley_mount();
+module x_carriage() {
+  difference(){
+    union() {
+      translate([0, 0, height/2])
+        y_axis_rod_clamps();
+      cube([width, depth, height], center=true);
+      translate([0, 0, height/2+clamp_height+pm_height/2])
+        pulley_mount();
+    }
+    rod_clearances();
+    linear_bearings();
   }
-  rod_clearances();
-  linear_bearings();
 }
 
+x_carriage();
