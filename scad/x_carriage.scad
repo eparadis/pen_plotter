@@ -40,8 +40,8 @@ module linear_bearings() {
   }
 }
 
+clamp_height = 1 + rod_pressfit_horiz + 1;
 module y_axis_rod_clamps() {
-  clamp_height = 1 + rod_pressfit_horiz + 1;
   translate([0, 0, clamp_height/2])
   difference() {
       cube([width, depth, clamp_height], center=true);
@@ -54,11 +54,34 @@ module y_axis_rod_clamps() {
   }
 }
 
+pm_height = 5;
+module pulley_mount() {
+  // TODO these four dimensions need to be coordinated with the motor mounts, y-carriage, and y-end-cap. The current values are placeholders. I don't know how to name them or define them yet.
+  back = 10;
+  front = -10;
+  inner = 10;
+  outer = 15;
+  pulleys = [
+    [-inner, back],
+    [+inner, back],
+    [-outer, front],
+    [+outer, front]
+  ];
+  difference() {
+    cube([width, depth, pm_height], center=true);
+    for (i=[0:3])
+      translate([pulleys[i].x, pulleys[i].y, -pm_height/2-eps])
+        cylinder(d=3mm_self_thread, h=pm_height*1.1);
+  }
+}
+
 difference(){
   union() {
     translate([0, 0, height/2])
       y_axis_rod_clamps();
     cube([width, depth, height], center=true);
+    translate([0, 0, height/2+clamp_height+pm_height/2])
+      pulley_mount();
   }
   rod_clearances();
   linear_bearings();

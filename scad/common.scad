@@ -13,3 +13,5 @@ lin_bearing_length = 15;  // TODO verify measurement
 rod_OD = 4.98;
 rod_clr = 1;
 rod_pressfit_horiz = 5;
+
+3mm_self_thread = 3.0;    // TODO verify measurement
