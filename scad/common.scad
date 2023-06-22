@@ -15,7 +15,7 @@ lin_bearing_length = 14.95;
 
 rod_OD = 4.98;
 rod_clr = 1;
-rod_pressfit_horiz = 5;
+rod_pressfit_horiz = 5.0; // a bit tight, but a little filing makes a good snug fit
 x_rod_length = 215;
 y_rod_length = 215;
 
