@@ -11,7 +11,7 @@ y_rod_spacing = 30;
 y_rod_height = 38;
 
 lin_bearing_OD_measured = 9.97;
-lin_bearing_OD = lin_bearing_OD_measured + 0.1; // needs more clearance when 3D printing in XY plane
+lin_bearing_OD = lin_bearing_OD_measured + 0.2; // needs more clearance when 3D printing in XY plane
 lin_bearing_length = 14.95;
 
 rod_OD = 4.98;
