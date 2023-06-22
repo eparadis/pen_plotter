@@ -2,7 +2,7 @@
 
 include <common.scad>
 
-width = y_rod_spacing + lin_bearing_OD + 1;
+width = y_rod_spacing + lin_bearing_OD + 2;
 depth = y_carriage_depth;
 height = 1 + lin_bearing_OD + 1;
 
