@@ -7,6 +7,7 @@ This is a "T" style differential drive XY gantry, similar in concept to the core
 - The side stands need stepper motor mounts. Ideally modular for swapping different sizes of stepper motors.
 - The pulley locations are *approximate* and *need* to be finalized. (This may result in some other geometry changes as their mounting holes interfere with the linear bearings or axis rods.)
 - The pen lift mechanism has not been designed. The Y axis carriage is designed to accept different pen lift mechanisms as I suspect these will vary depending on the actual pen used.
+- The maximum extents of the pen plotter should be calculated in openSCAD and reported to the user on render to ensure paremter changes result in a useful print area.
 - There is no wiring diagram yet, although this will be relatively trivial. The stepper motors are driven by EasyDrivers or similar connected to an Arduino or Raspberry Pi.
 - There is no software configuration yet. There are several existing, well-documented differential drive pen plotter projects to take inspiration from.
 
