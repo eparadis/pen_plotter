@@ -24,3 +24,14 @@ y_rod_length = 215;
 pulley_deck_height = 44;
 
 pen_lifter_bolt_pattern_diameter = 25;
+
+// LIN Engineering stepper 4118M-39D-01
+stepper_bolt_pattern_diameter = 43.51;
+stepper_axle_diameter = 4.98;
+stepper_axle_length = 22;
+stepper_body_width = 42.5;
+stepper_body_length = 42.5;
+stepper_body_height = 39.6;
+stepper_boss_diameter = 22;
+stepper_boss_height = 2;
+stepper_rear_axle_length = 8.5;
