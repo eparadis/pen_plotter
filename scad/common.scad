@@ -3,6 +3,7 @@ eps = 0.01;
 $fn= $preview ? 32 : 128;
 
 x_carriage_width = 50;
+y_carriage_depth = 50;
 
 x_rod_spacing = 30;
 x_rod_height = 30;
