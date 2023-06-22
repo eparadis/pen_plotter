@@ -51,7 +51,7 @@ module pulley_mount_holes() {
   translate([0, 0, -pm_height/2])
   for (i=[0:2])
     translate([pulleys[i].x, pulleys[i].y, -pm_height/2-eps])
-      cylinder(d=3mm_self_thread, h=pm_height*1.1);
+      cylinder(d=M3_self_thread, h=pm_height*1.1);
 }
 
 module pulley_mount_deck() {
@@ -72,7 +72,7 @@ module pen_lifter_mounts_and_cutout() {
     translate([0, 0, -pm_height])
       rotate([0, 0, theta])
         translate([0, pen_lifter_bolt_pattern_diameter/2, 0])
-          cylinder(d=3mm_self_thread, h=pm_height*1.1);
+          cylinder(d=M3_self_thread, h=pm_height*1.1);
   }
 }
 

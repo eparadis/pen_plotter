@@ -25,7 +25,7 @@ module pulley_mount_holes() {
   translate([0, 0, -pm_height/2])
     for (i=[0:1])
       translate([pulleys[i].x, pulleys[i].y, -pm_height/2-eps])
-        cylinder(d=3mm_self_thread, h=pm_height*1.1);
+        cylinder(d=M3_self_thread, h=pm_height*1.1);
 }
 
 module y_axis_endcap() {

@@ -20,7 +20,7 @@ rod_pressfit_horiz = 5.0; // a bit tight, but a little filing makes a good snug 
 x_rod_length = 215;
 y_rod_length = 215;
 
-3mm_self_thread = 3.0; // for vertical (along 3D printer Z axis) holes only.
+M3_self_thread = 3.0; // for vertical (along 3D printer Z axis) holes only.
 
 pulley_deck_height = 44;
 
