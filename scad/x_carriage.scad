@@ -41,21 +41,23 @@ module linear_bearings() {
 }
 
 clamp_height = 1 + rod_pressfit_horiz + 1;
-module y_axis_rod_clamps() {
+module y_axis_rod_clamp() {
   // This modules's Z position is relative to the y rods' height. Thus the center of the pressfit holes are Z=0.
-  difference() {
-      cube([width, depth, clamp_height], center=true);
-    translate([-y_rod_spacing/2, depth/2+eps, 0])
-      rotate([90, 0, 0])
-        cylinder(d=rod_pressfit_horiz, h=depth*1.1);
-    translate([+y_rod_spacing/2, depth/2+eps, 0])
-      rotate([90, 0, 0])
-        cylinder(d=rod_pressfit_horiz, h=depth*1.1);
-  }
+  cube([width, depth, clamp_height], center=true);
+}
+
+module y_axis_rod_holes() {
+  // This modules's Z position is relative to the y rods' height. Thus the center of the pressfit holes are Z=0.
+  translate([-y_rod_spacing/2, depth/2+eps, 0])
+    rotate([90, 0, 0])
+      cylinder(d=rod_pressfit_horiz, h=depth*1.1);
+  translate([+y_rod_spacing/2, depth/2+eps, 0])
+    rotate([90, 0, 0])
+      cylinder(d=rod_pressfit_horiz, h=depth*1.1);
 }
 
 pm_height = 5;
-module pulley_mount() {
+module pulley_mount_holes() {
   // This module's Z position is relative to the pulley system's deck height. Since pulleys mount on top of this, it's top surface is Z=0.
   // TODO these four dimensions need to be coordinated with the motor mounts, y-carriage, and y-end-cap. The current values are placeholders. I don't know how to name them or define them yet.
   back = 10;
@@ -69,12 +71,15 @@ module pulley_mount() {
     [+outer, front]
   ];
   translate([0, 0, -pm_height/2])
-  difference() {
-    cube([width, depth, pm_height], center=true);
     for (i=[0:3])
       translate([pulleys[i].x, pulleys[i].y, -pm_height/2-eps])
         cylinder(d=3mm_self_thread, h=pm_height*1.1);
-  }
+}
+
+module pulley_mount_deck() {
+  // This module's Z position is relative to the pulley system's deck height. Since pulleys mount on top of this, it's top surface is Z=0.
+  translate([0, 0, -pm_height/2])
+    cube([width, depth, pm_height], center=true);
 }
 
 module x_carriage() {
@@ -83,15 +88,17 @@ module x_carriage() {
     union() {
       cube([width, depth, height], center=true);
       translate([0, 0, y_rod_height-x_rod_height])
-        y_axis_rod_clamps();
+        y_axis_rod_clamp();
       translate([0, 0, pulley_deck_height-x_rod_height])
-        pulley_mount();
+        pulley_mount_deck();
     }
     rod_clearances();
     linear_bearings();
+    translate([0, 0, pulley_deck_height-x_rod_height])
+      pulley_mount_holes();
+    translate([0, 0, y_rod_height-x_rod_height])
+      y_axis_rod_holes();
   }
 }
 
 x_carriage();
-// y_axis_rod_clamps();
-// pulley_mount();
