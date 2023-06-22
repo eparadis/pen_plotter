@@ -39,11 +39,39 @@ module linear_bearings() {
   }
 }
 
+pm_height = 5;
+module pulley_mount_holes() {
+  // This module's Z position is relative to the pulley system's deck height. Since pulleys mount on top of this, its top surface is Z=0.
+  // the y carriage has a single pulley and rigid mount where the ends of the belt are securely fastened. Both are centered between the y axis rods
+  pulleys = [
+    [0, depth/2 - 5],
+    [0, -depth/2 + 5], // the belt-end mount is attached using
+    [0, -depth/2 + 15] //   these two mounting holes
+  ];
+  translate([0, 0, -pm_height/2])
+  for (i=[0:2])
+    translate([pulleys[i].x, pulleys[i].y, -pm_height/2-eps])
+      cylinder(d=3mm_self_thread, h=pm_height*1.1);
+}
+
+module pulley_mount_deck() {
+  // This module's Z position is relative to the pulley system's deck height. Since pulleys mount on top of this, its top surface is Z=0.
+  translate([0, 0, -pm_height/2])
+    cube([width, depth, pm_height], center=true);  // pulley mount deck
+}
+
 module y_carriage() {
+  // This module's Z height is referenced so that the center of the Y axis rods are Z=0
   difference() {
-    cube([width, depth, height], center=true);
+    union() {
+      cube([width, depth, height], center=true);
+      translate([0, 0, pulley_deck_height-y_rod_height])
+        pulley_mount_deck();
+    }
     rod_clearances();
     linear_bearings();
+    translate([0, 0, pulley_deck_height-y_rod_height])
+      pulley_mount_holes();
   }
 }
 
