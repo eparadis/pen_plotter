@@ -28,9 +28,9 @@ module y_carriage_pulleys() {
 }
 
 module y_axis_endcap_pulleys() {
-  translate([outer_idler_spacing/2, -y_rod_length, 0])
+  translate([inner_idler_spacing/2, -y_rod_length, 0])
     pulley();
-  translate([-outer_idler_spacing/2, -y_rod_length, 0])
+  translate([-inner_idler_spacing/2, -y_rod_length, 0])
     pulley();
 }
 
