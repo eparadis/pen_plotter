@@ -3,7 +3,7 @@
 
 include <common.scad>
 
-width = y_rod_spacing + 10;
+width = x_carriage_width;
 depth = 10;
 height = 1 + rod_pressfit_horiz + 1;
 
@@ -16,8 +16,7 @@ module pulley_mount_deck() {
 
 module pulley_mount_holes() {
   // This module's Z position is relative to the pulley system's deck height. Since pulleys mount on top of this, it's top surface is Z=0.
-  inner = 10;
-  outer = 15;
+  outer = outer_idler_spacing / 2;
   pulleys = [
     [-outer, 0],
     [+outer, 0]

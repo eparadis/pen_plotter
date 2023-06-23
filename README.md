@@ -3,7 +3,7 @@
 This is a "T" style differential drive XY gantry, similar in concept to the coreXY layout.
 
 ## WIP render of model
-![work-in-progres render of the openSCAD model](./images/wip-2023-06-21.png)
+![work-in-progres render of the openSCAD model](./images/wip-2023-06-22.png)
 
 # TODO
 - The side stands need feet or outriggers to counter-balance the weight of the Y axis.

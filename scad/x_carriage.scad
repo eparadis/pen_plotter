@@ -59,11 +59,10 @@ module y_axis_rod_holes() {
 pm_height = 5;
 module pulley_mount_holes() {
   // This module's Z position is relative to the pulley system's deck height. Since pulleys mount on top of this, it's top surface is Z=0.
-  // TODO these four dimensions need to be coordinated with the motor mounts, y-carriage, and y-end-cap. The current values are placeholders. I don't know how to name them or define them yet.
-  back = 10;
-  front = -10;
-  inner = 10;
-  outer = 15;
+  back = 0;
+  front = -outer_idler_offset;
+  inner = inner_idler_spacing / 2;
+  outer = outer_idler_spacing / 2;
   pulleys = [
     [-inner, back],
     [+inner, back],
