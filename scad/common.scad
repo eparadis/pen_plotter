@@ -39,8 +39,10 @@ stepper_boss_diameter = 22;
 stepper_boss_height = 2;
 stepper_rear_axle_length = 8.5;
 
-pulley_diameter = 12; // the effective diameter of the pulley. from highest points on teeth across
-belt_thickness = 2; // the thickness of the belt, not including the teeth
+pulley_diameter = 11.81; // the effective diameter of the pulley. from highest points on teeth across (from a printed 20T pulley)
+belt_thickness = 1.06; // the thickness of the belt, not including the teeth
+// the belt wrapped around the pulley is 14.17mm in diameter
+// larger than the 13.93 you'd expect from belt_thickness * 2 + pulley_diameter
 
 inner_idler_spacing = 2*(pulley_diameter + belt_thickness); // the distance between the two inner idlers on the x carriage
 outer_idler_spacing = 4*(pulley_diameter + belt_thickness); // the distance between the two outer idlers on the x carriage
