@@ -5,7 +5,7 @@ include <common.scad>
 
 depth = stepper_body_depth+10;
 height = pulley_deck_height;
-width = 10;
+width = 6;
 
 module x_axis_rod_clamps() {
   translate([-eps, x_rod_spacing/2, x_rod_height])
