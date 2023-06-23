@@ -4,6 +4,7 @@ use <x_carriage.scad>
 use <side_stand.scad>
 use <y_axis_endcap.scad>
 use <y_carriage.scad>
+use <pulleys.scad>
 
 translate([0, 0, x_rod_height])
   x_carriage();
@@ -20,3 +21,5 @@ translate([0, -y_rod_length, y_rod_height])
 
 translate([0, -y_rod_length/2, y_rod_height])
   y_carriage();
+
+%translate([0, 0, pulley_deck_height]) pulleys();

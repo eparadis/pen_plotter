@@ -38,3 +38,10 @@ stepper_body_height = 39.6;
 stepper_boss_diameter = 22;
 stepper_boss_height = 2;
 stepper_rear_axle_length = 8.5;
+
+pulley_diameter = 12; // the effective diameter of the pulley. from highest points on teeth across
+belt_thickness = 2; // the thickness of the belt, not including the teeth
+
+inner_idler_spacing = 2*(pulley_diameter + belt_thickness); // the distance between the two inner idlers on the x carriage
+outer_idler_spacing = 4*(pulley_diameter + belt_thickness); // the distance between the two outer idlers on the x carriage
+outer_idler_offset = pulley_diameter; // how far forward the outer idlers are offset from the center line of the x axis
