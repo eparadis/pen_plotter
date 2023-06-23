@@ -22,6 +22,7 @@ y_rod_length = 215;
 
 M3_self_thread = 3.0; // for vertical (along 3D printer Z axis) holes only.
 M3_pass_through = 3.2; // for vertical holes only
+M3_self_thread_horiz = 2.6; // for horizontal (along 3D printer XY plane) holes only.
 
 pulley_deck_height = 54;
 

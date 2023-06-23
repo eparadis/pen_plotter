@@ -43,8 +43,25 @@ module stepper_mount() {
     triangular_support();
 
   translate([width, -depth/2 + 4, pulley_deck_height-sm_height])
-    triangular_support();
-     
+    triangular_support(); 
+}
+
+module rod_set_screws() {
+  translate([width/2, -x_rod_spacing/2-eps, 0])
+    rotate([90,0,0])
+      cylinder(d=M3_self_thread_horiz, h=depth/2-x_rod_spacing/2);
+  translate([width/2, x_rod_spacing/2+eps, 0])
+    rotate([-90,0,0])
+      cylinder(d=M3_self_thread_horiz, h=depth/2-x_rod_spacing/2);
+}
+
+module outrigger_mounts() {
+  translate([width/2, -depth/2+5-eps, 0])
+    rotate([90,0,0])
+      cylinder(d=M3_self_thread_horiz, h=5);
+  translate([width/2, depth/2-5+eps, 0])
+    rotate([-90,0,0])
+      cylinder(d=M3_self_thread_horiz, h=5);
 }
 
 module side_stand() {
@@ -53,6 +70,12 @@ module side_stand() {
       translate([0, -depth/2, 0])
         cube([width, depth, height]);
       x_axis_rod_clamps();
+      translate([0, 0, x_rod_height])
+        rod_set_screws();
+      translate([0, 0, 5])
+        outrigger_mounts();
+      translate([0, 0, 15])
+        outrigger_mounts();
     }
     stepper_mount();
   }
