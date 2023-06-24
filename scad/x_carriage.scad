@@ -4,7 +4,7 @@ include <common.scad>;
 
 width = x_carriage_width;
 height = 1 + lin_bearing_OD + 1;
-depth = x_rod_spacing + (lin_bearing_OD * 0.7);
+depth = x_rod_spacing + lin_bearing_OD + 2;
 
 
 module rod_clearances() {
